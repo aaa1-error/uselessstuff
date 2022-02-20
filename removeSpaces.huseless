@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+
+std::string runsp(std::string in) {
+	enum modes {
+		onWord, onSpace
+	};
+	modes mode = modes::onWord;
+
+
+	std::vector<char> uniques;
+	bool isUnique = true;
+
+	for(size_t i = 0; i < in.length(); i++) {
+		switch(mode) {
+			case onWord:
+				if(in[i] == ' ') {
+					mode = onSpace;
+				}
+				break;
+			case onSpace:
+				if(in[i] == ' ') {
+
+					for(i = i; i < in.length();i++){
+						if(in[i] != ' ') break;
+						if (in[i] == ' ') in[i] = 0;
+					}
+				} else {
+					mode = onWord;
+				}
+				break;
+			default:
+				printf("");
+				return "NIGGERSNIGGERSNIGGERS";
+		}
+	}
+	return in;
+}
